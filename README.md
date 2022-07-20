@@ -6,6 +6,7 @@
 ![Screen2](https://github.com/Dawid01/Third-Person-Shooter-Controller/blob/main/3.png)
 ![Screen3](https://github.com/Dawid01/Third-Person-Shooter-Controller/blob/main/1.png)
 ![gif1](https://github.com/Dawid01/Third-Person-Shooter-Controller/blob/main/v1.gif)
+![gif2](https://github.com/Dawid01/Third-Person-Shooter-Controller/blob/main/v2.gif)
 \
 **Animations:** Mixamo\
 **Player Model:** Mixamo\
