@@ -12,6 +12,7 @@ public class Gun : MonoBehaviour
     protected Sprite icon;
 
     public Transform shootOut;
+    public Transform LHandTarget;
 
     [SerializeField]
     protected int maxAmo;
@@ -41,6 +42,7 @@ public class Gun : MonoBehaviour
     private RectTransform canvasRect;
     [SerializeField]
     protected LayerMask hitCrosshairLayer;
+    public bool isActive = false;
 
     void Start()
     {
@@ -51,6 +53,8 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
+        if (!isActive) return;
+
         if (Input.GetMouseButton(0))
         {
             recoil = Mathf.Lerp(recoil, Input.GetMouseButton(1) ? aimRecoil : normalRecoil, Time.deltaTime);
@@ -95,7 +99,9 @@ public class Gun : MonoBehaviour
         firedAmo = (firedAmo > allAmo) ? allAmo : firedAmo;
         allAmo-= firedAmo;
         amo += firedAmo;
-        gunInfo.UpdateInfo();
+        if (gunInfo){
+            gunInfo.UpdateInfo();
+        }
         isAmo = true;
     }
 

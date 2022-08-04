@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform cameraPack;
     public Rig RHandRig;
+    public Rig WeaponRig; 
     public Rig LHandRig;
 
     private float gravity = Physics.gravity.y;
@@ -198,6 +199,8 @@ public class PlayerMovement : MonoBehaviour
         if (!isReload)
         {
             RHandRig.weight = Mathf.Lerp(RHandRig.weight, (Input.GetKey(KeyCode.LeftShift) && movement == Vector3.zero) ? 0f : 1f, Time.deltaTime * 10f);
+            WeaponRig.weight = Mathf.Lerp(WeaponRig.weight, (Input.GetKey(KeyCode.LeftShift) && movement == Vector3.zero) ? 0f : 1f, Time.deltaTime * 10f);
+
             LHandRig.weight = Mathf.Lerp(LHandRig.weight, 1f, Time.deltaTime * 10f);
         }
 
@@ -234,6 +237,7 @@ public class PlayerMovement : MonoBehaviour
     {
         animator.SetTrigger("FlipForward");
         RHandRig.weight = 0f;
+        WeaponRig.weight = 0f;
         freezMovement = true;
         speed = 6;
         controller.radius = 1f;
@@ -248,6 +252,7 @@ public class PlayerMovement : MonoBehaviour
     {
         animator.SetTrigger("Kick");
         RHandRig.weight = 0f;
+        WeaponRig.weight = 0f;
         LHandRig.weight = 0f;
         freezMovement = true;
         moveDirection = Vector3.zero;
@@ -261,6 +266,7 @@ public class PlayerMovement : MonoBehaviour
         usingGun.StartReload();
         isReload = true;
         RHandRig.weight = 0f;
+        WeaponRig.weight = 0f;
         LHandRig.weight = 0f;      
         yield return new WaitForSeconds(duration);
         isReload = false;
@@ -272,6 +278,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetTrigger("JumpOver");
         isReload = true;
         RHandRig.weight = 0f;
+        WeaponRig.weight = 0f;
         LHandRig.weight = 0f;
         controller.height = 0.5f;
         speed = 8f;
@@ -292,6 +299,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetTrigger("ChangeWeapon");
         isReload = true;
         RHandRig.weight = 0f;
+        WeaponRig.weight = 0f;
         LHandRig.weight = 0f;
         yield return new WaitForSeconds(duration);
         isReload = false;

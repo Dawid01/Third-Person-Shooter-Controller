@@ -66,6 +66,7 @@ public class Rifle : Gun
         {
             GameObject holePrefab = null;
             trail.transform.position = hit.point;
+            Destroy(trail.gameObject, trail.time);
             string tag = hit.transform.tag;
             switch (tag)
             {
@@ -88,7 +89,6 @@ public class Rifle : Gun
             {
                 Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
                 rb.AddForce(-hit.normal * 10f, ForceMode.Impulse);
-                Destroy(trail.gameObject, trail.time);
             }
             catch { }
         }
